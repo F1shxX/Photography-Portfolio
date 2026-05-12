@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张肖禹摄影作品集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #c0392b;
+            --light-color: #ecf0f1;
+            --dark-color: #1a252f;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* 分类导航分隔符 */
+        .nav-separator {
+            color: rgba(255,255,255,0.3);
+            margin: 0 5px;
+            font-size: 0.8rem;
+            user-select: none;
+        }
+
+        /* 分类下拉菜单 */
+        .nav-category-wrapper {
+            position: relative;
+        }
+
+        .nav-category-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-category-trigger i {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-category-wrapper:hover .nav-category-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .nav-category-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark-color);
+            min-width: 140px;
+            border-radius: 8px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        .nav-category-wrapper:hover .nav-category-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-category-dropdown a {
+            display: block;
+            padding: 8px 20px;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-category-dropdown a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--accent-color);
+            padding-left: 25px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://t1.chatglm.cn/file/6a01556ac4e0c0347ff7d68b.jpg?expired_at=1778904417&sign=1aeb1560b69a986564030b2630728db1&ext=jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .hero-btn:hover {
+            background-color: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid var(--accent-color);
+            border-radius: 10px;
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 0;
+            background-color: #f5f5f5;
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 5px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+
+        .gallery-info {
+            padding: 20px;
+        }
+
+        .gallery-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .gallery-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .gallery-category {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: auto;
+            padding: 50px 20px;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 20px;
+            background-color: var(--dark-color);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            background-color: #f5f5f5;
+        }
+
+        .modal-details {
+            padding: 30px;
+        }
+
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .modal-technique {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-technique h4 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .technique-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .technique-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .technique-text {
+            font-size: 0.9rem;
+        }
+
+        .technique-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-desc {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .copyright {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            .about-image {
+                margin-bottom: 30px;
+            }
+            .about-image::before {
+                display: none;
+            }
+            .contact-content {
+                flex-direction: column;
+            }
+            .modal-body {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-color);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                display: none;
+                gap: 5px;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 5px 0;
+                width: 100%;
+            }
+            nav ul li a {
+                display: block;
+                padding: 8px 15px;
+                border-radius: 5px;
+            }
+            nav ul li a:hover {
+                background-color: rgba(255,255,255,0.05);
+            }
+            .nav-category-dropdown {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 0 0 0 20px;
+                display: none;
+                min-width: auto;
+            }
+            .nav-category-wrapper:hover .nav-category-dropdown {
+                display: none;
+            }
+            .nav-category-wrapper.open .nav-category-dropdown {
+                display: block;
+            }
+            .nav-category-trigger i {
+                transition: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">张肖禹<span>摄影</span></div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="nav-link">首页</a></li>
+                        <li><a href="#about" class="nav-link">关于我</a></li>
+                        <li class="nav-category-wrapper">
+                            <a href="#gallery" class="nav-link nav-category-trigger">
+                                作品集 <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="nav-category-dropdown">
+                                <a href="#" data-nav-filter="all">全部作品</a>
+                                <a href="#" data-nav-filter="nature">自然风光</a>
+                                <a href="#" data-nav-filter="people">人文纪实</a>
+                                <a href="#" data-nav-filter="architecture">建筑摄影</a>
+                                <a href="#" data-nav-filter="detail">细节之美</a>
+                            </div>
+                        </li>
+                        <li><a href="#contact" class="nav-link">联系方式</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>用镜头捕捉世界的瞬间</h1>
+            <p>每一张照片都是一个故事，每一次快门都是一次心灵的对话。我通过镜头记录生活中的美好瞬间，用光影讲述世界的多彩故事。</p>
+            <a href="#gallery" class="hero-btn">浏览作品</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/young-photographer-camera/600/800.jpg" alt="张肖禹">
+                </div>
+                <div class="about-text">
+                    <h3>张肖禹</h3>
+                    <p>我是一名大二在读学生，也是一名热爱摄影的记录者。从小受到父亲的影响，我对相机和光影产生了浓厚的兴趣。父亲总是带着相机记录家庭和生活，耳濡目染之下，我也渐渐拿起了相机，学会用镜头去观察这个世界。</p>
+                    <p>高中时期是我摄影创作最集中的阶段，这组作品中的大部分都拍摄于那段时光。从校园里同学奔跑的剪影，到家乡宗谱仪式上的庄重瞬间，再到旅行途中壮阔的日出山峦——每一次按下快门，都是我对生活最真实的回应。</p>
+                    <p>如今进入大学，我依然保持着对摄影的热情，继续探索不同的风格与技术。我相信，摄影不仅是记录，更是一种与世界对话的方式，而我的镜头，将始终对准那些值得被铭记的瞬间。</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-text">年摄影经历</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-text">精选作品</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-text">摄影奖项</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>摄影作品</h2>
+            </div>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="nature">自然风光</button>
+                <button class="filter-btn" data-filter="people">人文纪实</button>
+                <button class="filter-btn" data-filter="architecture">建筑摄影</button>
+                <button class="filter-btn" data-filter="detail">细节之美</button>
+            </div>
+            <div class="gallery-grid">
+                <!-- 星夜松影 -->
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://t1.chatglm.cn/file/6a01556ac4e0c0347ff7d68b.jpg?expired_at=1778904417&sign=1aeb1560b69a986564030b2630728db1&ext=jpg" alt="星夜松影" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">星夜松影</h3>
+                        <p class="gallery-desc">画面以仰视视角呈现深邃的夜空，繁星如碎钻般散落，银河隐约可见；左侧是深色剪影般的松树枝叶，枝桠交错，与星空形成自然对比。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">自然风光</span>
+                            <span>2024年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 暮光投篮 -->
+                <div class="gallery-item" data-category="people">
+                    <img src="https://t1.chatglm.cn/file/6a01556c73da0208f1b41f8e.jpg?expired_at=1778904417&sign=ff1a630134511773f97d3c75b2cca418&ext=jpg" alt="暮光投篮" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">暮光投篮</h3>
+                        <p class="gallery-desc">黄昏时分，篮球场上的少年以剪影姿态跃起投篮，篮球悬于空中，篮筐与篮板清晰可见；背景是渐变的暮色天空，从橙黄到深紫。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">人文纪实</span>
+                            <span>2021年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 镜面建筑 -->
+                <div class="gallery-item" data-category="architecture">
+                    <img src="https://t1.chatglm.cn/file/6a01556e4cb0fcbae699bdeb.jpg?expired_at=1778904417&sign=45e9b8b28d7b509f2fd5babbe8a1f1f8&ext=jpg" alt="镜面建筑" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">镜面建筑</h3>
+                        <p class="gallery-desc">夜晚的现代建筑被灯光勾勒出尖锐的几何轮廓，前方水面如镜，完整倒映建筑形态，形成上下对称的视觉效果；建筑线条简洁，灯光柔和。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">建筑摄影</span>
+                            <span>2025年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 空荡礼堂 -->
+                <div class="gallery-item" data-category="architecture">
+                    <img src="https://t1.chatglm.cn/file/6a0155706bd5e5d2b3b415f6.jpg?expired_at=1778904417&sign=439b75f3c9107ef686167348decb5f37&ext=jpg" alt="空荡礼堂" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">空荡礼堂</h3>
+                        <p class="gallery-desc">室内空间中，木质长椅整齐排列，墙面嵌有五盏壁灯，光线投射出温暖的光晕；天花板呈斜坡状，整体环境空旷安静，无多余装饰。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">建筑摄影</span>
+                            <span>2025年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 宗谱仪式 -->
+                <div class="gallery-item" data-category="people">
+                    <img src="https://t1.chatglm.cn/file/6a0155736bd5e5d2b3b415f8.jpg?expired_at=1778904417&sign=6d0393a901c76298516857cc1ee1d863&ext=jpg" alt="宗谱仪式" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">宗谱仪式</h3>
+                        <p class="gallery-desc">画面中心是一尊红色雕花木柜，上面刻有"张氏宗谱"字样，顶部装饰大红花结，两侧有人用竹竿抬着木柜；背景中可见人群与红色布幔，整体色调浓郁。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">人文纪实</span>
+                            <span>2025年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 蒲公英特写 -->
+                <div class="gallery-item" data-category="detail">
+                    <img src="https://t1.chatglm.cn/file/6a01557573da0208f1b41f92.jpg?expired_at=1778904417&sign=bb6044cb154953c2ffda882c5345fbbc&ext=jpg" alt="蒲公英特写" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">蒲公英特写</h3>
+                        <p class="gallery-desc">画面以低角度聚焦一株生长在草地上的成熟蒲公英，白色绒球饱满蓬松，细长茎秆挺拔；背景是模糊的秋日公园——远处树木染上橙红秋色，近处草地上散落枯叶与杂草。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">细节之美</span>
+                            <span>2026年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 山岳全景 -->
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://t1.chatglm.cn/file/6a01557773da0208f1b41f93.jpg?expired_at=1778904417&sign=35201921b9d0c3cec3bbca6f35d70c8e&ext=jpg" alt="山岳全景" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">山岳全景</h3>
+                        <p class="gallery-desc">展现连绵雄伟的山脉景观，岩石山峰棱角分明，部分山体被阳光镀上暖金色；前景有松树枝桠延伸入画，背景是澄澈蓝天与淡粉霞光，整体视野开阔。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">自然风光</span>
+                            <span>2024年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 日出山峦 -->
+                <div class="gallery-item" data-category="nature">
+                    <img src="https://t1.chatglm.cn/file/6a01557bc4e0c0347ff7d6a4.jpg?expired_at=1778904417&sign=b49b9ebc0a81d42ecb9690955bc4eba8&ext=jpg" alt="日出山峦" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">日出山峦</h3>
+                        <p class="gallery-desc">捕捉日出时分的山间景象，太阳跃出地平线，将橙红色霞光洒满天际；下方山峦呈深蓝色剪影，右上角松树枝桠以黑色轮廓切割画面，天空渐变从橙黄到淡蓝。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">自然风光</span>
+                            <span>2024年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 春日花枝 -->
+                <div class="gallery-item" data-category="detail">
+                    <img src="https://t1.chatglm.cn/file/6a01557e4cb0fcbae699bdfc.jpg?expired_at=1778904417&sign=4ba054809f19c0f5b7f5f96953a07be4&ext=jpg" alt="春日花枝" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">春日花枝</h3>
+                        <p class="gallery-desc">特写一枝开满淡粉色花朵的树枝，花瓣娇嫩带纹路，花苞与新叶错落分布；背景为纯净浅灰色，突出花枝的细腻纹理。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">细节之美</span>
+                            <span>2022年</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 暮色花影 -->
+                <div class="gallery-item" data-category="detail">
+                    <img src="https://t1.chatglm.cn/file/6a015580c4e0c0347ff7d6aa.jpg?expired_at=1778904417&sign=9cdc6bbb1b519a15ce941a011102660a&ext=jpg" alt="暮色花影" class="gallery-img">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title">暮色花影</h3>
+                        <p class="gallery-desc">拍摄黄昏时分的花枝，花朵呈柔粉色，在暗背景下若隐若现；光线偏暖黄，给花瓣蒙上一层朦胧滤镜，整体氛围静谧而略带忧郁。</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-category">细节之美</span>
+                            <span>2022年</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>与我取得联系</h3>
+                    <p>如果您对我的作品感兴趣，或者想要合作拍摄，欢迎通过以下方式与我联系。我期待与您的交流，共同创造更多美丽的影像。</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>2021142744@qq.com</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>+86 191 9614 4096</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>浙江省杭州市</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">主题</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-desc">用镜头记录生活中的美好瞬间，用影像传递内心的感动。</p>
+            <p class="copyright">&copy; 2026 张肖禹摄影作品集. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">作品详情</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="" class="modal-image">
+                <div class="modal-details">
+                    <h3 class="modal-image-title"></h3>
+                    <p class="modal-description"></p>
+                    <div class="modal-technique">
+                        <h4>拍摄技巧</h4>
+                        <div class="technique-grid">
+                            <div class="technique-item">
+                                <div class="technique-icon"><i class="fas fa-camera"></i></div>
+                                <div class="technique-text"><span class="technique-label">相机</span> <span class="modal-camera"></span></div>
+                            </div>
+                            <div class="technique-item">
+                                <div class="technique-icon"><i class="fas fa-cog"></i></div>
+                                <div class="technique-text"><span class="technique-label">光圈</span> <span class="modal-aperture"></span></div>
+                            </div>
+                            <div class="technique-item">
+                                <div class="technique-icon"><i class="fas fa-clock"></i></div>
+                                <div class="technique-text"><span class="technique-label">快门</span> <span class="modal-shutter"></span></div>
+                            </div>
+                            <div class="technique-item">
+                                <div class="technique-icon"><i class="fas fa-sun"></i></div>
+                                <div class="technique-text"><span class="technique-label">ISO</span> <span class="modal-iso"></span></div>
+                            </div>
+                            <div class="technique-item">
+                                <div class="technique-icon"><i class="fas fa-crosshairs"></i></div>
+                                <div class="technique-text"><span class="technique-label">焦距</span> <span class="modal-focal"></span></div>
+                            </div>
+                            <div class="technique-item">
+                                <div class="technique-icon"><i class="fas fa-sliders-h"></i></div>
+                                <div class="technique-text"><span class="technique-label">后期</span> <span class="modal-post"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // ===== 核心功能：筛选并跳转到对应分类 =====
+        function filterAndScroll(category) {
+            // 1. 激活对应的筛选按钮
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+            if (targetBtn) targetBtn.classList.add('active');
+
+            // 2. 执行筛选
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // 3. 平滑滚动到作品集区域
+            const gallerySection = document.getElementById('gallery');
+            if (gallerySection) {
+                window.scrollTo({
+                    top: gallerySection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+
+            // 4. 关闭移动端菜单
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
+
+        // 导航栏分类下拉菜单点击事件
+        document.querySelectorAll('.nav-category-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.getAttribute('data-nav-filter');
+                filterAndScroll(category);
+            });
+        });
+
+        // 移动端：点击"作品集"展开/收起子菜单
+        const navCategoryWrapper = document.querySelector('.nav-category-wrapper');
+        const navCategoryTrigger = document.querySelector('.nav-category-trigger');
+
+        // Gallery Filter Buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter');
+                filterAndScroll(filterValue);
+            });
+        });
+
+        // Modal Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.querySelector('.modal-image');
+        const modalTitle = document.querySelector('.modal-image-title');
+        const modalDesc = document.querySelector('.modal-description');
+        const closeModalBtn = document.querySelector('.close-modal');
+
+        // Photography data
+        const photoData = {
+            '星夜松影': {
+                description: '画面以仰视视角呈现深邃的夜空，繁星如碎钻般散落，银河隐约可见；左侧是深色剪影般的松树枝叶，枝桠交错，与星空形成自然对比。这张照片聚焦"自然与宇宙的对话"，通过树木与星空的组合，传递静谧、敬畏与对未知的好奇，展现自然的宏大与生命的渺小。采用三分法构图，树木占据左1/3空间，引导视线向右侧广阔星空延伸；星空作为背景，层次丰富，从近景星点到远景银河，平衡了画面的轻重感。',
+                camera: 'Canon 5D Mark4', aperture: 'f/2.8', shutter: '20秒', iso: '3200', focal: '24mm', post: 'Lightroom, Photoshop'
+            },
+            '暮光投篮': {
+                description: '黄昏时分，篮球场上的少年以剪影姿态跃起投篮，篮球悬于空中，篮筐与篮板清晰可见；背景是渐变的暮色天空，从橙黄到深紫。这张照片捕捉"青春与运动的活力"，通过动态瞬间传递热情、专注与对目标的追求，展现日常场景中的生命张力。采用中心对称式构图，人物与篮球位于画面右侧黄金分割点，篮筐在左侧呼应，形成视觉焦点；天空的渐变色彩引导视线从下到上流动，增强动感。',
+                camera: 'Canon 5D Mark3', aperture: 'f/8', shutter: '1/500秒', iso: '100', focal: '85mm', post: 'Lightroom'
+            },
+            '镜面建筑': {
+                description: '夜晚的现代建筑被灯光勾勒出尖锐的几何轮廓，前方水面如镜，完整倒映建筑形态，形成上下对称的视觉效果；建筑线条简洁，灯光柔和。这张照片探索"建筑与空间的镜像关系"，通过对称构图展现现代设计的秩序感与极简美学，传递静谧、庄严的氛围。采用绝对对称式构图，建筑位于画面中心，水面倒影完全复制上方结构，形成"双重建筑"的视觉效果；水平线将画面一分为二，强化稳定感。',
+                camera: 'Canon 5D Mark4', aperture: 'f/11', shutter: '1/30秒', iso: '100', focal: '35mm', post: 'Lightroom, Photoshop'
+            },
+            '空荡礼堂': {
+                description: '室内空间中，木质长椅整齐排列，墙面嵌有五盏壁灯，光线投射出温暖的光晕；天花板呈斜坡状，整体环境空旷安静，无多余装饰。这张照片聚焦"空间的静谧与等待"，通过空无一人的场景传递孤独、沉思或对仪式感的期待，引发观者对"缺席"的思考。采用纵深构图，长椅从前景向背景延伸，形成透视感；壁灯沿墙面等距排列，形成节奏感；天花板的高耸感增加了空间的纵深感，引导视线向远处延伸。',
+                camera: 'Canon 5D Mark4', aperture: 'f/8', shutter: '1/60秒', iso: '400', focal: '24mm', post: 'Lightroom'
+            },
+            '宗谱仪式': {
+                description: '画面中心是一尊红色雕花木柜，上面刻有"张氏宗谱"字样，顶部装饰大红花结，两侧有人用竹竿抬着木柜；背景中可见人群与红色布幔，整体色调浓郁。这张照片记录"传统文化仪式的传承"，通过宗谱展示家族历史与文化认同，传递对祖先的敬仰与血缘纽带的重视。采用中心聚焦式构图，木柜位于画面正中央，成为视觉核心；周围人物的手臂与竹竿形成放射状线条，引导视线集中于木柜；红色元素贯穿画面，增强仪式感。',
+                camera: 'Canon 5D Mark4', aperture: 'f/5.6', shutter: '1/200秒', iso: '800', focal: '50mm', post: 'Lightroom'
+            },
+            '蒲公英特写': {
+                description: '画面以低角度聚焦一株生长在草地上的成熟蒲公英，白色绒球饱满蓬松，细长茎秆挺拔；背景是模糊的秋日公园——远处树木染上橙红秋色，近处草地上散落枯叶与杂草，光线柔和似晨昏时分。这张照片捕捉自然中"微小却坚韧"的生命力，借蒲公英象征平凡生命的诗意与自由。采用浅景深特写，主体蒲公英占据视觉中心，背景虚化形成朦胧氛围感；低角度拍摄强化了蒲公英的"存在感"，与开阔草地形成对比。',
+                camera: 'Canon 5D Mark3', aperture: 'f/2.8', shutter: '1/500秒', iso: '200', focal: '100mm', post: 'Lightroom'
+            },
+            '山岳全景': {
+                description: '展现连绵雄伟的山脉景观，岩石山峰棱角分明，部分山体被阳光镀上暖金色；前景有松树枝桠延伸入画，背景是澄澈蓝天与淡粉霞光，整体视野开阔。这张照片歌颂自然的壮阔与力量，体现山岳的雄浑气势与天地苍茫之美。采用广角全景构图，山脉从左至右铺展，层次分明；天空占比约1/3，平衡画面重量，松树的加入增添生机与空间纵深感。',
+                camera: 'Canon 5D Mark4', aperture: 'f/11', shutter: '1/125秒', iso: '100', focal: '16mm', post: 'Lightroom, Photoshop'
+            },
+            '日出山峦': {
+                description: '捕捉日出时分的山间景象，太阳跃出地平线，将橙红色霞光洒满天际；下方山峦呈深蓝色剪影，右上角松树枝桠以黑色轮廓切割画面，天空渐变从橙黄到淡蓝。这张照片表现"希望与新生"的时间节点，借日出象征破晓与光明，山峦的沉静衬托日出的动态张力。采用三分法+框架式构图，太阳位于左下三分之一处，天空占上半部分；松树枝桠从右上角延伸，形成天然画框，引导视线向日出方向。',
+                camera: 'Canon 5D Mark4', aperture: 'f/8', shutter: '1/250秒', iso: '100', focal: '24mm', post: 'Lightroom'
+            },
+            '春日花枝': {
+                description: '特写一枝开满淡粉色花朵的树枝，花瓣娇嫩带纹路，花苞与新叶错落分布；背景为纯净浅灰色，突出花枝的细腻纹理。这张照片聚焦"春天的新生"，通过花朵的绽放传递季节更替的温柔与生命力。采用对角线+疏密对比构图，花枝沿画面对角线延伸，花朵分布疏密有致；浅灰背景彻底弱化干扰，让主体成为绝对焦点。',
+                camera: 'Canon 5D Mark4', aperture: 'f/4', shutter: '1/1000秒', iso: '200', focal: '85mm', post: 'Lightroom'
+            },
+            '暮色花影': {
+                description: '拍摄黄昏时分的花枝，花朵呈柔粉色，在暗背景下若隐若现；光线偏暖黄，给花瓣蒙上一层朦胧滤镜，整体氛围静谧而略带忧郁。这张照片捕捉"暮色的温柔"，借黄昏光线与暗调背景表现时光流逝中的美感，花朵如记忆般朦胧。采用暗调特写+虚实结合，花朵分布在画面中下部，背景完全虚化成深色；光线集中在花朵上，形成"聚光灯效果"，强化主体的脆弱与美感。',
+                camera: 'Canon 5D Mark4', aperture: 'f/2.8', shutter: '1/60秒', iso: '400', focal: '105mm', post: 'Lightroom, Photoshop'
+            }
+        };
+
+        // Add click event to gallery items
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('.gallery-img').src;
+                const title = item.querySelector('.gallery-title').textContent;
+                const data = photoData[title];
+
+                modalImg.src = imgSrc;
+                modalTitle.textContent = title;
+                modalDesc.textContent = data.description;
+                document.querySelector('.modal-camera').textContent = data.camera;
+                document.querySelector('.modal-aperture').textContent = data.aperture;
+                document.querySelector('.modal-shutter').textContent = data.shutter;
+                document.querySelector('.modal-iso').textContent = data.iso;
+                document.querySelector('.modal-focal').textContent = data.focal;
+                document.querySelector('.modal-post').textContent = data.post;
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scrolling for main navigation links (首页、关于我、联系方式)
+        document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+
+                // 如果是作品集的触发器（带下拉菜单），在桌面端不做跳转，仅展开下拉
+                if (this.classList.contains('nav-category-trigger')) {
+                    // 移动端：切换子菜单
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const wrapper = this.closest('.nav-category-wrapper');
+                        wrapper.classList.toggle('open');
+                    }
+                    // 桌面端：hover自动展开下拉菜单，点击主链接跳转到gallery
+                    return;
+                }
+
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close mobile menu
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Hero按钮跳转
+        document.querySelector('.hero-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`感谢您的留言，${name}！我会尽快回复您的消息。`);
+            contactForm.reset();
+        });
+
+        // Scroll animation for gallery items
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        galleryItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
